@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* justify-content: center; */
+  height: 100px;
+  width: 100%;
+  background-color: rgb(72, 15, 15);
+  padding-left: 50px;
+}
+
+.link {
+  font-size: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: rgb(255, 127, 127);
+  padding: 10px;
+  border-radius: 30px;
+}
