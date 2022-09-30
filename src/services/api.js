@@ -13,9 +13,9 @@ const fetchTrendingMovies = async () => {
   }
 };
 
-const fetchMovie = async () => {
+const fetchMovie = async query => {
   try {
-    const URL = `/search/movie?api_key=${API_KEY}&query={query}`;
+    const URL = `/search/movie?api_key=${API_KEY}&query=${query}`;
     const data = await axios.get(URL);
     return data;
   } catch (error) {
@@ -23,9 +23,9 @@ const fetchMovie = async () => {
   }
 };
 
-const fetchMovieDetails = async () => {
+const fetchMovieDetails = async id => {
   try {
-    const URL = `/search/movie/{movieId}?api_key=${API_KEY}`;
+    const URL = `/movie/${id}?api_key=${API_KEY}`;
     const data = await axios.get(URL);
     return data;
   } catch (error) {
@@ -33,9 +33,9 @@ const fetchMovieDetails = async () => {
   }
 };
 
-const fetchMovieDetailsActors = async () => {
+const fetchMovieDetailsActors = async id => {
   try {
-    const URL = `/search/movie/{movieId}/credits?api_key=${API_KEY}`;
+    const URL = `/movie/${id}/credits?api_key=${API_KEY}`;
     const data = await axios.get(URL);
     return data;
   } catch (error) {
@@ -43,9 +43,9 @@ const fetchMovieDetailsActors = async () => {
   }
 };
 
-const fetchMovieDetailsReviews = async () => {
+const fetchMovieDetailsReviews = async id => {
   try {
-    const URL = `/search/movie/{movieId}/reviews?api_key=${API_KEY}`;
+    const URL = `/movie/${id}/reviews?api_key=${API_KEY}`;
     const data = await axios.get(URL);
     return data;
   } catch (error) {
@@ -60,15 +60,3 @@ export const api = {
   fetchMovieDetailsActors,
   fetchMovieDetailsReviews,
 };
-
-// https://api.themoviedb.org/3/movie/550?api_key=4126216689337915d73a8e90fb5db117
-
-// https://api.themoviedb.org/3/trending/movie/day - home
-
-// /search/movie - movies
-
-// /movie/{movie_id} - details
-
-// /movie/{movie_id}/credits - actors
-
-// /movie/{movie_id}/reviews - reviews
