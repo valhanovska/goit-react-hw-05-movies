@@ -6,14 +6,29 @@
   height: 100px;
   width: 100%;
   background-color: rgb(72, 15, 15);
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 
 .link {
+  margin-left: 50px;
   font-size: 30px;
   width: 100px;
   height: 50px;
   background-color: rgb(255, 127, 127);
   padding: 10px;
   border-radius: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.link.s.active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  border: 1px solid white;
+}
+.link:hover:not(.active),
+.link:focus-visible:not(.active) {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  border: 1px solid white;
 }
