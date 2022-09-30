@@ -1,26 +1,25 @@
 import { Route, Routes, NavLink } from 'react-router-dom';
-import Home from '../components/Home';
-import Movies from '../components/Movies';
-import MovieDetails from '../components/MovieDetails';
-import Cast from '../components/Cast';
-import Reviews from '../components/Reviews';
+// import Home from '../pages/Home';
+// import Movies from '../pages/Movies';
+// import MovieDetails from '../pages/MovieDetails';
+// import Cast from '../pages/Cast';
+// import Reviews from '../pages/Reviews';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import s from './App.module.css';
+import { lazy, Suspense } from 'react';
+
+// const MyComponent = lazy(() => import('path/to/MyComponent'));
+
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Cast = lazy(() => import('../pages/Cast'));
+const Reviews = lazy(() => import('../pages/Reviews'));
 
 export const App = () => {
   return (
-    // <div
-    //   style={{
-    //     height: '100vh',
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     fontSize: 40,
-    //     color: '#010101',
-    //   }}
-    // >
-    //   React homework template
-    // </div>
     <>
       <nav className={s.nav}>
         <NavLink to="/" end className={s.link}>
@@ -31,16 +30,20 @@ export const App = () => {
         </NavLink>
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
 
-        <Route path="*" element={<div>NotFound</div>} />
-      </Routes>
+          <Route path="*" element={<div>NotFound</div>} />
+        </Routes>
+      </Suspense>
+
+      <ToastContainer autoClose={3000} />
     </>
   );
 };
