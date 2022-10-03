@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import s from './Searchbar.module.css';
 
 const Searchbar = ({ onSubmit }) => {
@@ -29,10 +30,13 @@ const Searchbar = ({ onSubmit }) => {
       </label>
       <button type="submit" className={s.button}>
         Search
-        {/* <MyIcon /> */}
       </button>
     </form>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
 };
 
 export default Searchbar;
